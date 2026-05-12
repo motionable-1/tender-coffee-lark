@@ -1496,13 +1496,6 @@
         return nextTime;
       };
 
-      window.__player = {
-        getDuration: () => 24,
-        seek: seekMain,
-        play: () => timeline.play(),
-        pause: () => timeline.pause(),
-      };
-
       const readRequestedTime = () => {
         const params = new URLSearchParams(window.location.search);
         const hashParams = new URLSearchParams(
