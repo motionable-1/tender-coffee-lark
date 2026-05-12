@@ -99,7 +99,8 @@ const createPlayerState = (player: HyperframesPlayerElement) => {
       ? player.duration
       : 0;
   const sceneDurationInFrames = metadata.scenes.reduce(
-    (duration, scene) => Math.max(duration, scene.from + scene.durationInFrames),
+    (duration, scene) =>
+      Math.max(duration, scene.from + scene.durationInFrames),
     0,
   );
   const durationInFrames = Math.max(
