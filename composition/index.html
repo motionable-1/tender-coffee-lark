@@ -1484,6 +1484,409 @@
           Math.max(start, end - 0.001),
         );
       });
+
+      gsap.set(".s1 .status-module", { xPercent: -50, yPercent: -50 });
+      gsap.set(".s2 .command-bar", { xPercent: -50 });
+      gsap.set(".s6 .center-stack", { xPercent: -50, yPercent: -51 });
+
+      const drawPaths = (selector, at, duration, stagger = 0) => {
+        gsap.utils.toArray(selector).forEach((path, index) => {
+          const length = path.getTotalLength();
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+          timeline.to(
+            path,
+            {
+              strokeDashoffset: 0,
+              duration,
+              ease: "power3.out",
+            },
+            at + index * stagger,
+          );
+        });
+      };
+
+      timeline
+        .fromTo(
+          ".s1 .plate-bg",
+          { scale: 1.09 },
+          { scale: 1.02, duration: 3.2, ease: "none" },
+          0,
+        )
+        .fromTo(
+          ".s1 .status-module",
+          { autoAlpha: 0, yPercent: -40, scale: 0.86, filter: "blur(10px)" },
+          {
+            autoAlpha: 1,
+            yPercent: -50,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 0.58,
+            ease: "back.out(1.45)",
+          },
+          0.24,
+        )
+        .fromTo(
+          ".s1 .logo-mark",
+          { scale: 0.55, rotation: -16 },
+          { scale: 1, rotation: 0, duration: 0.62, ease: "back.out(1.9)" },
+          0.34,
+        )
+        .fromTo(
+          ".s1 .text-line",
+          { yPercent: 115, autoAlpha: 0 },
+          {
+            yPercent: 0,
+            autoAlpha: 1,
+            duration: 0.46,
+            stagger: 0.12,
+            ease: "power4.out",
+          },
+          0.44,
+        )
+        .fromTo(
+          ".s1 .soft-dot",
+          { scale: 0.3, autoAlpha: 0 },
+          { scale: 1, autoAlpha: 1, duration: 0.35, ease: "back.out(2.2)" },
+          0.92,
+        )
+        .to(
+          ".s1 .soft-dot",
+          {
+            scale: 1.24,
+            repeat: 2,
+            yoyo: true,
+            duration: 0.28,
+            ease: "power1.inOut",
+          },
+          1.14,
+        )
+        .fromTo(
+          ".s1 .ambient-line",
+          { scaleX: 0, autoAlpha: 0 },
+          {
+            scaleX: 1,
+            autoAlpha: 1,
+            duration: 0.72,
+            stagger: 0.11,
+            ease: "power3.out",
+          },
+          0.12,
+        )
+        .to(
+          ".s1 .floating-square",
+          {
+            y: -18,
+            rotation: "+=12",
+            duration: 2.2,
+            stagger: 0.12,
+            ease: "sine.inOut",
+          },
+          0.56,
+        );
+
+      timeline
+        .fromTo(
+          ".s2 .plate-bg",
+          { scale: 1.08 },
+          { scale: 1.02, duration: 4.2, ease: "none" },
+          3.2,
+        )
+        .fromTo(
+          ".s2 .headline .text-line",
+          { yPercent: 120, autoAlpha: 0 },
+          { yPercent: 0, autoAlpha: 1, duration: 0.48, ease: "power4.out" },
+          3.36,
+        )
+        .fromTo(
+          ".s2 .command-bar",
+          { autoAlpha: 0, y: 56, scale: 0.92, filter: "blur(8px)" },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 0.56,
+            ease: "back.out(1.35)",
+          },
+          3.66,
+        )
+        .fromTo(
+          ".s2 .command-text .text-line",
+          { yPercent: 120, autoAlpha: 0 },
+          { yPercent: 0, autoAlpha: 1, duration: 0.4, ease: "power4.out" },
+          3.9,
+        )
+        .fromTo(
+          ".s2 .bottom-panel",
+          { autoAlpha: 0, y: 84, scale: 0.94 },
+          {
+            autoAlpha: 0.9,
+            y: 0,
+            scale: 1,
+            duration: 0.54,
+            stagger: 0.1,
+            ease: "power3.out",
+          },
+          4.28,
+        )
+        .fromTo(
+          ".s2 .cursor",
+          { autoAlpha: 0, x: -190, y: 96, rotation: -26, scale: 0.74 },
+          {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            rotation: -12,
+            scale: 1,
+            duration: 0.72,
+            ease: "power3.out",
+          },
+          4.74,
+        )
+        .to(
+          ".s2 .cursor",
+          { x: 112, y: -96, duration: 0.68, ease: "power3.inOut" },
+          5.32,
+        )
+        .to(
+          ".s2 .send-button",
+          {
+            scale: 0.88,
+            duration: 0.12,
+            yoyo: true,
+            repeat: 1,
+            ease: "power1.inOut",
+          },
+          5.9,
+        )
+        .to(
+          ".s2 .caret",
+          {
+            autoAlpha: 0,
+            repeat: 5,
+            yoyo: true,
+            duration: 0.16,
+            ease: "steps(1)",
+          },
+          4.1,
+        )
+        .fromTo(
+          ".s2 .chart-svg path",
+          { autoAlpha: 0 },
+          { autoAlpha: 1, duration: 0.4, stagger: 0.05, ease: "power2.out" },
+          4.62,
+        );
+
+      drawPaths(".s3 .connector-path", 8.18, 0.82, 0.12);
+      timeline
+        .fromTo(
+          ".s3 .headline .text-line",
+          { yPercent: 120, autoAlpha: 0 },
+          { yPercent: 0, autoAlpha: 1, duration: 0.46, ease: "power4.out" },
+          7.58,
+        )
+        .fromTo(
+          ".s3 .integration-card",
+          { autoAlpha: 0, y: 78, scale: 0.82 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.58,
+            stagger: 0.14,
+            ease: "back.out(1.45)",
+          },
+          7.82,
+        )
+        .fromTo(
+          ".s3 .node-dot",
+          { scale: 0, autoAlpha: 0 },
+          {
+            scale: 1,
+            autoAlpha: 1,
+            duration: 0.25,
+            stagger: 0.12,
+            ease: "back.out(2)",
+          },
+          8.5,
+        )
+        .to(
+          ".s3 .integration-card",
+          {
+            y: -10,
+            duration: 1.2,
+            stagger: 0.08,
+            yoyo: true,
+            repeat: 1,
+            ease: "sine.inOut",
+          },
+          8.84,
+        );
+
+      drawPaths(".s4 .workflow-line", 12.38, 0.95);
+      timeline
+        .fromTo(
+          ".s4 .heading-block .text-line",
+          { yPercent: 120, autoAlpha: 0 },
+          {
+            yPercent: 0,
+            autoAlpha: 1,
+            duration: 0.48,
+            stagger: 0.1,
+            ease: "power4.out",
+          },
+          11.42,
+        )
+        .fromTo(
+          ".s4 .workflow-node",
+          { autoAlpha: 0, y: 64, scale: 0.82 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.48,
+            stagger: 0.14,
+            ease: "back.out(1.45)",
+          },
+          11.9,
+        )
+        .fromTo(
+          ".s4 .workflow-dot",
+          { scale: 0, autoAlpha: 0 },
+          {
+            scale: 1,
+            autoAlpha: 1,
+            duration: 0.28,
+            stagger: 0.04,
+            ease: "back.out(2)",
+          },
+          12.34,
+        )
+        .fromTo(
+          ".s4 .status-pill",
+          { autoAlpha: 0, y: 16, scale: 0.72 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.32,
+            stagger: 0.1,
+            ease: "back.out(2)",
+          },
+          12.92,
+        )
+        .to(
+          ".s4 .node-icon",
+          {
+            scale: 1.12,
+            repeat: 1,
+            yoyo: true,
+            duration: 0.18,
+            stagger: 0.12,
+            ease: "power1.inOut",
+          },
+          13.22,
+        );
+
+      drawPaths(".s5 .chart-line", 16.78, 0.88, 0.12);
+      timeline
+        .fromTo(
+          ".s5 .headline .text-line",
+          { yPercent: 120, autoAlpha: 0 },
+          { yPercent: 0, autoAlpha: 1, duration: 0.48, ease: "power4.out" },
+          15.84,
+        )
+        .fromTo(
+          ".s5 .date-pill",
+          { autoAlpha: 0, y: -28 },
+          { autoAlpha: 1, y: 0, duration: 0.42, ease: "power3.out" },
+          16.08,
+        )
+        .fromTo(
+          ".s5 .dash-card",
+          { autoAlpha: 0, y: 72, scale: 0.94 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.56,
+            stagger: 0.12,
+            ease: "power3.out",
+          },
+          16.22,
+        )
+        .fromTo(
+          ".s5 .metric-value",
+          { autoAlpha: 0, y: 26 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.38,
+            stagger: 0.08,
+            ease: "power3.out",
+          },
+          16.62,
+        )
+        .fromTo(
+          ".s5 .chart-fill",
+          { autoAlpha: 0 },
+          { autoAlpha: 0.3, duration: 0.48, stagger: 0.08, ease: "power2.out" },
+          16.9,
+        )
+        .fromTo(
+          ".s5 .bar",
+          { scaleY: 0, transformOrigin: "50% 100%" },
+          { scaleY: 1, duration: 0.62, stagger: 0.07, ease: "back.out(1.35)" },
+          17.08,
+        );
+
+      timeline
+        .fromTo(
+          ".s6 .plate-bg",
+          { scale: 1.08 },
+          { scale: 1.02, duration: 3.4, ease: "none" },
+          20.6,
+        )
+        .fromTo(
+          ".s6 .logo-mark",
+          { autoAlpha: 0, y: 56, scale: 0.52, rotation: -18 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            rotation: 0,
+            duration: 0.62,
+            ease: "back.out(1.7)",
+          },
+          20.92,
+        )
+        .fromTo(
+          ".s6 .brand-title",
+          { yPercent: 120, autoAlpha: 0 },
+          { yPercent: 0, autoAlpha: 1, duration: 0.45, ease: "power4.out" },
+          21.28,
+        )
+        .fromTo(
+          ".s6 .cta-button",
+          { autoAlpha: 0, y: 34, scale: 0.88 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.45,
+            ease: "back.out(1.55)",
+          },
+          21.66,
+        )
+        .to(
+          ".s6 .arrow-circle",
+          { x: 8, repeat: 3, yoyo: true, duration: 0.22, ease: "power1.inOut" },
+          22.14,
+        );
+
       timeline.to(
         durationMarker,
         { progress: 1, duration: 24, ease: "power1.inOut" },
